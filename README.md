@@ -23,4 +23,5 @@ Ubicarse en el directorio donde se desea descargar el proyecto y ejecutar:
 -- dotnet run
 
 ##Abrir Swagger en el navegador:
-https://localhost:XXXX/swagger -- En la consola se mostrará el swagger. Ej: https://localhost:7165
+https://localhost:XXXX/swagger -- En la consola se mostrará el puerto. Ej: https://localhost:7165, se debe agregar /swagger en el navegador, quedando de esta forma: https://localhost:7165/swagger.
+--El puerto se debe guardar para colocarlo en el frontend.
