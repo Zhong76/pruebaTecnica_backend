@@ -6,6 +6,7 @@ using Microsoft.Data.SqlClient;
 using System.Data;
 using BackendPrueba.Api.Models;
 using Microsoft.AspNetCore.Authorization;
+using BackendPrueba.Api.Controllers;
 
 namespace BackendPrueba.Api.Controllers
 {
@@ -14,9 +15,11 @@ namespace BackendPrueba.Api.Controllers
     public class UsuarioController : ControllerBase
     {
         private readonly DbConnectionFactory _db;
-        public UsuarioController(DbConnectionFactory db)
+        private readonly LoginController _loginController;
+        public UsuarioController(DbConnectionFactory db, LoginController loginController)
         {
             _db = db;
+            _loginController = loginController;
         }
         [Authorize]
         [HttpGet]
@@ -126,12 +129,8 @@ namespace BackendPrueba.Api.Controllers
 
         [Authorize]
         [HttpPost]
-        public Task<IActionResult> Create(UsuarioCreateRequest request) => CreateUser(request, isPublic: false);
+        public Task<IActionResult> Create(UsuarioCreateRequest request) => _loginController.CreateUser(request);
 
-        private async Task<IActionResult> CreateUser(UsuarioCreateRequest request, bool isPublic)
-        {
-            throw new NotImplementedException();
-        }
 
         [Authorize]
         [HttpPut("{id:int}")]

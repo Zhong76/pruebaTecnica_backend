@@ -156,7 +156,7 @@ namespace BackendPrueba.Api.Controllers
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
 
-        private async Task<IActionResult> CreateUser(UsuarioCreateRequest request)
+        public async Task<IActionResult> CreateUser(UsuarioCreateRequest request)
         {
             try
             {
